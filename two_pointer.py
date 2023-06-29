@@ -1,17 +1,20 @@
-n = 5 # 데이터 개수
-m = 5 # 목표 부분합
-data = [1,2,3,2,5]
+a = [1,5,9]
+b = [2,4,6,8]
+n,m = 3,4
 
-count = 0
-interval_sum = 0
-end = 0
+result = [0] * (n+m)
+i=0
+j=0
+k=0
 
-for start in range(n):
-  while interval_sum < m and end < n:
-    interval_sum += data[end]
-    end += 1
-  if interval_sum == m: # 부분합 >= m 이면 start+1 하며 다음 경우로 넘어감
-    count += 1
-  interval_sum -= data[start]
+while i < n or j < m:
+  if j>=m or (i<n and a[i]<= b[j]): #b리스트 모두 끝 or a의 원소가 더 작을 때
+    result[k] = a[i]
+    i += 1
+  else: # a리스트 모두 끝 or b의 원소가 더 작을때
+    result[k] = b[j]
+    j += 1
+  k += 1
   
-print(count)
+for i in result:
+  print(i,end=' ')
